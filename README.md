@@ -1,198 +1,162 @@
-# Sistema de Gestão SOPUKA
+<div>
 
-Sistema de gestão **fullstack** desenvolvido para fins académicos, utilizando **Django REST Framework no backend** e **Vue.js no frontend**, com operações **CRUD completas**, dashboard interativo e notificações visuais.
+<h1>Sistema de Gestão SOPUKA – Backend (Django REST API)</h1>
 
-O sistema permite gerir **Clientes, Serviços, Projetos e Equipas**, consumindo dados reais a partir de uma API REST.
+<p>
+Sistema de gestão <strong>backend</strong> desenvolvido para fins académicos, utilizando
+<strong>Django REST Framework</strong>, responsável por fornecer uma
+<strong>API RESTful</strong> consumida por um frontend desenvolvido em Vue.js.
+</p>
 
----
+<p>
+A API gere dados de <strong>Clientes</strong>, <strong>Serviços</strong>,
+<strong>Equipas</strong> e <strong>Projetos</strong>, com operações CRUD completas.
+</p>
 
-## 📌 Tecnologias Utilizadas
+<hr/>
 
-### Backend
+<h2>📌 Tema Escolhido</h2>
 
-* Python 3
-* Django
-* Django REST Framework
-* SQLite (base de dados)
-* Django CORS Headers
+<p>
+Sistema de Gestão Empresarial para controlo de clientes, serviços, equipas e projetos,
+baseado em arquitetura REST.
+</p>
 
-### Frontend
+<hr/>
 
-* Vue.js 3 (Vite)
-* Vue Router
-* Axios
-* Bootstrap 5
-* Bootstrap Icons
+<h2>⚙️ Tecnologias Utilizadas</h2>
 
----
+<ul>
+  <li>Python 3</li>
+  <li>Django</li>
+  <li>Django REST Framework</li>
+  <li>SQLite (Base de dados)</li>
+  <li>Django CORS Headers</li>
+  <li>Gunicorn</li>
+  <li>Git & GitHub</li>
+</ul>
 
-## 🎯 Funcionalidades Principais
+<hr/>
 
-* CRUD completo (Criar, Listar, Atualizar e Eliminar)
-* Dashboard com indicadores estatísticos
-* Consumo real de API REST
-* Notificações visuais (Toast) para ações do utilizador
-* Interface responsiva e profissional
-* Separação clara entre frontend e backend
+<h2>🎯 Funcionalidades Principais</h2>
 
----
+<ul>
+  <li>CRUD completo (Criar, Listar, Atualizar e Eliminar)</li>
+  <li>API RESTful</li>
+  <li>Relacionamentos entre entidades (FK e M2M)</li>
+  <li>Integração com frontend Vue.js</li>
+  <li>Suporte a métodos GET, POST, PUT e DELETE</li>
+</ul>
 
-## 🧩 Entidades do Sistema
+<hr/>
 
-* **Clientes**
-* **Serviços**
-* **Projetos**
-* **Equipas**
+<h2>🧩 Entidades do Sistema</h2>
 
----
+<ul>
+  <li>Clientes</li>
+  <li>Serviços</li>
+  <li>Equipas</li>
+  <li>Projetos</li>
+</ul>
 
-## 🔗 Endpoints da API (Backend – SOPUKA)
+<hr/>
 
-A API segue o padrão **RESTful**, implementada com **Django REST Framework**.
-Cada entidade possui um endpoint próprio com **CRUD completo**, suportando os métodos **GET, POST, PUT, PATCH e DELETE**.
+<h2>🗂️ Diagrama das Entidades</h2>
 
-### 📌 Clientes
+<pre>
+CLIENTE
+- id
+- nome
+- email
+- telefone
+- localizacao
 
-| Método | Endpoint            | Descrição                    |
-| ------ | ------------------- | ---------------------------- |
-| GET    | /api/clientes/      | Listar todos os clientes     |
-| GET    | /api/clientes/{id}/ | Obter cliente por ID         |
-| POST   | /api/clientes/      | Criar novo cliente           |
-| PUT    | /api/clientes/{id}/ | Atualizar cliente (completo) |
-| PATCH  | /api/clientes/{id}/ | Atualizar cliente (parcial)  |
-| DELETE | /api/clientes/{id}/ | Eliminar cliente             |
+SERVICO
+- id
+- nome
+- tipo
+- descricao
+- preco_base
 
-### 📌 Serviços
+EQUIPA
+- id
+- nome
+- funcao
+- especialidade
+- contacto
 
-| Método | Endpoint            | Descrição                      |
-| ------ | ------------------- | ------------------------------ |
-| GET    | /api/servicos/      | Listar serviços                |
-| GET    | /api/servicos/{id}/ | Obter serviço por ID           |
-| POST   | /api/servicos/      | Criar serviço                  |
-| PUT    | /api/servicos/{id}/ | Atualizar serviço              |
-| PATCH  | /api/servicos/{id}/ | Atualizar serviço parcialmente |
-| DELETE | /api/servicos/{id}/ | Eliminar serviço               |
+PROJETO
+- id
+- cliente (FK)
+- servicos (M2M)
+- equipas (M2M)
+- data_inicio
+- data_fim
+- estado
+- local_execucao
+</pre>
 
-### 📌 Projetos
+<hr/>
 
-| Método | Endpoint            | Descrição                      |
-| ------ | ------------------- | ------------------------------ |
-| GET    | /api/projetos/      | Listar projetos                |
-| GET    | /api/projetos/{id}/ | Obter projeto por ID           |
-| POST   | /api/projetos/      | Criar projeto                  |
-| PUT    | /api/projetos/{id}/ | Atualizar projeto              |
-| PATCH  | /api/projetos/{id}/ | Atualizar projeto parcialmente |
-| DELETE | /api/projetos/{id}/ | Eliminar projeto               |
+<h2>🔗 Endpoints da API</h2>
 
-### 📌 Equipas
+<h3>Clientes</h3>
 
-| Método | Endpoint           | Descrição                     |
-| ------ | ------------------ | ----------------------------- |
-| GET    | /api/equipas/      | Listar equipas                |
-| GET    | /api/equipas/{id}/ | Obter equipa por ID           |
-| POST   | /api/equipas/      | Criar equipa                  |
-| PUT    | /api/equipas/{id}/ | Atualizar equipa              |
-| PATCH  | /api/equipas/{id}/ | Atualizar equipa parcialmente |
-| DELETE | /api/equipas/{id}/ | Eliminar equipa               |
+<ul>
+  <li>GET /api/clientes/ – Listar clientes</li>
+  <li>POST /api/clientes/ – Criar cliente</li>
+  <li>PUT /api/clientes/{id}/ – Atualizar cliente</li>
+  <li>DELETE /api/clientes/{id}/ – Eliminar cliente</li>
+</ul>
 
----
+<p>
+As restantes entidades (<strong>Serviços</strong>, <strong>Equipas</strong> e
+<strong>Projetos</strong>) seguem o mesmo padrão RESTful.
+</p>
 
-## 🖥️ Dashboard
+<hr/>
 
-O dashboard apresenta informações resumidas do sistema, incluindo:
+<h2>⚙️ Instruções de Execução</h2>
 
-* Total de clientes
-* Total de projetos
-* Total de serviços
-* Total de equipas
+<pre>
+git clone https://github.com/SEU_USUARIO/backend-django-gestao.git
+cd backend-django-gestao
 
-Os dados são carregados dinamicamente a partir da API REST.
-
----
-
-## 🔔 Notificações
-
-O sistema possui **notificações visuais (toast)** que informam ao utilizador quando:
-
-* Um registo é criado
-* Um registo é atualizado
-* Um registo é eliminado
-* Ocorre um erro
-
-Isso melhora significativamente a experiência do utilizador.
-
----
-
-## ⚙️ Como Executar o Projeto
-
-### Backend (Django)
-
-```bash
-cd backend
 python -m venv venv
-venv\\Scripts\\activate  # Windows
+venv\Scripts\activate   (Windows)
+
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-```
+</pre>
 
-Servidor disponível em:
+<p>API disponível em:</p>
 
-```
+<pre>
 http://127.0.0.1:8000/api/
-```
+</pre>
 
----
+<hr/>
 
-### Frontend (Vue.js)
+<h2>🎓 Objetivo Académico</h2>
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+<p>
+Projeto desenvolvido para fins académicos, com foco na aplicação prática de:
+</p>
 
-Aplicação disponível em:
+<ul>
+  <li>APIs REST</li>
+  <li>Arquitetura Backend</li>
+  <li>Integração Frontend / Backend</li>
+</ul>
 
-```
-http://localhost:5173
-```
+<hr/>
 
----
+<h2>👤 Autor</h2>
 
-## 🧠 Conceitos Aplicados
+<p>
+<strong>Elias Sopupa</strong><br/>
+Projeto Académico – Django REST Framework
+</p>
 
-* Arquitetura REST
-* Separação de responsabilidades (Backend / Frontend)
-* Componentização no Vue.js
-* Reutilização de componentes (CRUD genérico)
-* Boas práticas de UX/UI
-* Consumo de API com Axios
-
----
-
-## 🎓 Objetivo Académico
-
-Este projeto foi desenvolvido como **trabalho académico**, com foco em:
-
-* Aplicação prática de conceitos de desenvolvimento web
-* Integração frontend + backend
-* Preparação para projetos reais
-
----
-
-## 📄 Licença
-
-Este projeto é de uso académico e educativo.
-
----
-
-## 👤 Autor
-
-**Elias Sopupa**
-Estudante de Tecnologia da Informação
-Projeto – Django REST + Vue.js
-
----
-
-> *“Sistema desenvolvido para demonstrar competências em desenvolvimento fullstack moderno.”*
+</div>
