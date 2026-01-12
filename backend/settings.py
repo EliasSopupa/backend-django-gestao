@@ -23,11 +23,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-vns(05a=7-48jqq-pmzkyx3g*+tpem!ku@5s)(ee=hhxxdad!1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
+
+ALLOWED_HOSTS = ['*']
+
+<<<<<<< Updated upstream
 ALLOWED_HOSTS = [ "backend-django-gestao.onrender.com",
     "localhost",
     "127.0.0.1",]
+=======
+>>>>>>> Stashed changes
 
 
 # Application definition
@@ -39,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'rest_framework',
+    'corsheaders',
     'core',
 
 
