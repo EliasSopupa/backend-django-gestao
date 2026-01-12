@@ -135,6 +135,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 CORS_ALLOWED_ORIGINS = [
+    "https://*.onrender.com",
+    "https://*.vercel.app"
     "http://localhost:3000",
     "http://localhost:5173",
 ]
