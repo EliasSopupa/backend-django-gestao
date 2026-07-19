@@ -119,7 +119,7 @@ As restantes entidades (<strong>Serviços</strong>, <strong>Equipas</strong> e
 <h2>⚙️ Instruções de Execução</h2>
 
 <pre>
-git clone https://github.com/SEU_USUARIO/backend-django-gestao.git
+git clone https://github.com/EliasSopupa/backend-django-gestao.git
 cd backend-django-gestao
 
 python -m venv venv
